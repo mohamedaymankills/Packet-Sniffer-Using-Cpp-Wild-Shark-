@@ -68,4 +68,70 @@ A packet sniffer is a tool that captures and analyzes network traffic. It works 
     BPF allows you to filter packets based on specific criteria (e.g., IP address, port).
 
     Example: host 192.168.1.1 and port 80 captures only HTTP traffic to/from 192.168.1.1.
+
+
+## Steps to Implement
+
+### Open a Network Interface:
+
+        Use pcap_open_live() to start capturing packets.
+
+### Set Up Filtering:
+
+        Use pcap_compile() and pcap_setfilter() to filter packets by IP/port.
+
+### Capture Packets:
+
+        Use pcap_loop() to capture packets and pass them to a callback function.
+
+### Parse Packet Headers:
+
+        Extract Ethernet, IP, and TCP/UDP/ICMP headers.
+
+        Use structs like ethhdr, iphdr, tcphdr, udphdr, and icmphdr.
+
+### Digest Application Layer Protocols:
+
+        Identify the protocol based on the port number (e.g., port 80 for HTTP).
+
+        Parse the payload data.
+
+    Handle Inheritance for Application Protocols:
+
+        Use a base class (e.g., ApplicationLayer) and derive classes for HTTP, DNS, and FTP.
+
+        Override a process() method to handle protocol-specific parsing.
+
+
+## Why Use Inheritance?
+
+    Inheritance allows you to create a generic interface for processing application layer protocols.
+
+    Each protocol (HTTP, DNS, FTP) can implement its own parsing logic.
+
+### Design
+
+   ### Base Class:
+
+        Define a virtual method process() to handle payload data.
+
+   ### Derived Classes:
+
+        Implement process() for each protocol (e.g., HTTP, DNS, FTP).        
+
+
+## Implement Filtering
+### Command-Line Arguments
+
+    Use a library like getopt to parse command-line options for IP and port filtering.
+
+### BPF Filter
+
+    Construct a filter expression based on the provided IP and port.
+
+    Example: host 192.168.1.1 and port 80.
+
+### Apply the Filter
+
+    Use pcap_compile() and pcap_setfilter() to apply the filter to the capture session.
     
