@@ -47,7 +47,7 @@ Ensure the following dependencies are installed before compiling and running the
    ```
 3. Compile the project:
    ```sh
-   g++ -o packet_sniffer packet_sniffer.cpp -lpcap
+   g++ -o WildShark WildShark.cpp -lpcap
    ```
 
 ## Usage
@@ -60,7 +60,7 @@ sudo ./packet_sniffer [-i IP] [-p PORT]
 
 Example:
 ```sh
-sudo ./packet_sniffer -i 192.168.1.1 -p 80
+sudo ./WildShark -i 192.168.1.1 -p 80
 ```
 This captures packets to/from IP `192.168.1.1` and port `80` (HTTP traffic).
 
