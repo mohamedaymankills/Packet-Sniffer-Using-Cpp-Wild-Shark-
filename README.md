@@ -16,6 +16,73 @@ A packet sniffer is a tool that captures and analyzes network traffic. It works 
 
     Payload: The actual data being transmitted (e.g., HTTP request, DNS query).   
 
+
+
+# Network Packet Sniffer
+
+## Overview
+This project is a simple network packet sniffer implemented in C++ using the `libpcap` library. It captures and analyzes network packets, supporting multiple protocols, including TCP, UDP, ICMP, and application-layer protocols such as HTTP, DNS, and FTP.
+
+## Features
+- Captures live packets on a specified network interface.
+- Extracts and displays Ethernet, IP, TCP, UDP, and ICMP headers.
+- Identifies and processes HTTP, DNS, and FTP payloads.
+- Filters packets based on IP address and port using command-line options.
+
+## Dependencies
+Ensure the following dependencies are installed before compiling and running the project:
+- `g++` (GCC compiler for C++)
+- `libpcap` (packet capture library)
+- `netinet` headers (included in standard Linux distributions)
+
+## Installation
+1. Install `libpcap` if not already installed:
+   ```sh
+   sudo apt update && sudo apt install libpcap-dev
+   ```
+2. Clone the repository:
+   ```sh
+   git clone <repository-url>
+   cd <repository-directory>
+   ```
+3. Compile the project:
+   ```sh
+   g++ -o packet_sniffer packet_sniffer.cpp -lpcap
+   ```
+
+## Usage
+Run the program with optional filters:
+```sh
+sudo ./packet_sniffer [-i IP] [-p PORT]
+```
+- `-i IP` : Filter packets based on the specified IP address.
+- `-p PORT` : Filter packets based on the specified port number.
+
+Example:
+```sh
+sudo ./packet_sniffer -i 192.168.1.1 -p 80
+```
+This captures packets to/from IP `192.168.1.1` and port `80` (HTTP traffic).
+
+## Code Structure
+- `ApplicationLayer` (Base class for protocol handlers)
+- `HTTP`, `DNS`, `FTP` (Derived classes for application-layer protocols)
+- `packet_handler()` (Processes each captured packet)
+- `main()` (Initializes packet capture and sets filters)
+
+## License
+This project is licensed under the MIT License.
+
+## Author
+Mohamed Ayman Mohamed Abdelaziz
+
+## Download
+[Download README](./README.md)
+
+
+
+
+
 ## UML
 ![3](https://github.com/mohamedaymankills/Packet-Sniffer-Using-Cpp-Wild-Shark-/blob/main/Images/UML%20class.png?raw=true)
 ## What are Network Protocol?
