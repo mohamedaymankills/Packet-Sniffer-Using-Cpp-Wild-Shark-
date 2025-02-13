@@ -1,6 +1,6 @@
 # Packet-Sniffer-Using-Cpp-Wild-Shark-
 ## What is a Packet Sniffer?
-!(1)[https://github.com/mohamedaymankills/Packet-Sniffer-Using-Cpp-Wild-Shark-/blob/main/Images/Screenshot%20from%202025-02-13%2022-26-03.png?raw=true]
+![1](https://github.com/mohamedaymankills/Packet-Sniffer-Using-Cpp-Wild-Shark-/blob/main/Images/Screenshot%20from%202025-02-13%2022-26-03.png?raw=true)
 A packet sniffer is a tool that captures and analyzes network traffic. It works at the data link layer (Layer 2) or network layer (Layer 3) of the OSI model.
 
     The sniffer puts the network interface into promiscuous mode to capture all packets, not just those addressed to the host.
